@@ -1,36 +1,51 @@
 <template>
-<section>
-<header><h1>My friends list</h1></header>
- 
- <ul>
-   <friend-contact></friend-contact>
-   <friend-contact></friend-contact>
-   
- </ul>
- </section>
+  <section>
+    <header><h1>My friends list</h1></header>
+
+    <ul>
+      <friend-contact
+       v-for="friend in friends"
+       :key="friend.id"
+       :name="friend.name"
+       :phone-number="friend.phone"
+       :email-address="friend.email"
+       :is-favorite="true"
+       @toggle-favorite="toggleFavoriteStatus"
+       ></friend-contact>
+      
+    </ul>
+  </section>
 </template>
 
 <script>
 export default {
-  data(){
-    return{
-      friends:[
+  data() {
+    return {
+      friends: [
         {
-          id:1,
-          name:'Ronald',
-          phone:'0725029795',
-          email:'ronidad@gmail.com'
+          id: 1,
+          name: "Ronald",
+          phone: "0725029795",
+          email: "ronidad@gmail.com",
+          isFavorite: false
         },
         {
-          id:2,
-          name:'Benard',
-          phone:'07240297923',
-          email:'ben@gmail.com'
-        }
-      ]
+          id: 2,
+          name: "Benard",
+          phone: "07240297923",
+          email: "ben@gmail.com",
+          isFavorite: true
+        },
+      ],
+    };
+  },
+  methods: {
+    toggleFavoriteStatus(){
+      alert("this works");
+
     }
   }
-}
+};
 
 // import HelloWorld from './components/HelloWorld.vue'
 
@@ -43,8 +58,6 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
-
 * {
   box-sizing: border-box;
 }
@@ -65,13 +78,12 @@ header {
   width: 90%;
   max-width: 40rem;
 }
-ul {
+#app ul {
   margin: 0;
   padding: 0;
   list-style: none;
-  text-align: center;
 }
-li {
+#app li {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 1rem auto;
   border-radius: 10px;
@@ -86,7 +98,7 @@ li {
   color: #58004d;
   margin: 0 0 1rem 0;
 }
-button {
+#app button {
   font: inherit;
   cursor: pointer;
   border: 1px solid #ff0077;
@@ -94,10 +106,9 @@ button {
   color: white;
   padding: 0.05rem 1rem;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);
-  text-align: center;
 }
-button:hover,
-button:active {
+#app button:hover,
+#app button:active {
   background-color: #ec3169;
   border-color: #ec3169;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
